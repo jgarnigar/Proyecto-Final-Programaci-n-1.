@@ -51,7 +51,7 @@
     static int index = 0;
     static bool archivoFailed = false;
 
-- inventory: es un arreglo de longitud 30 en la cual almacenaremos los datos de todos los estudiantes. Hay una cantidad de 25 estudiantes. Sin embargo, configuramos la variable con 5 espacios extras por cualquier error.
+- inventory: es un arreglo de longitud 30 en la cual almacenaremos los datos de todos los estudiantes. Hay una cantidad de 25 estudiantes. Sin embargo, configuramos la variable con 5 espacios extras por cualquier error. 
 - index: es una variable entera la cual nos dice cuál es la última posición disponible para agregar a un nuevo estudiante.
 - archivoFailed: nos indica si alguno de los archivos no fue abierto correctamente. Si en algún momento cualquiera de los 3 archivos no se abre, cambia el valor a true, lo cual verificaremos en el main.
 
@@ -59,6 +59,10 @@
 ## ***Clase LeerArchivos()***
 
 *Dicha clase nos ayudará a leer los datos de todos los archivos y almacenarlos en el inventario creado globalmente. Leemos primero el archivo de estudiantes, almacenamos los carnets como claves principales. Cuando abramos los archivos notas y nombres, utilizaremos el carnet para encontrar el objeto correcto .*
+
+*Para la clase LeerArchivos, creamos otra clase separada igual de importante que es ***searchCourse***, esta clase es súper importante ya que nos ayuda a obtener los valores exactos para encontrar los nombres y notas de cada estudiante haciendo uso del método ***subst()*** .*
+
+***Archivos:*** "estudiantes.txt", "notas.txt", "nombres.txt".
 
 ## ***Menús***
 
@@ -91,4 +95,40 @@
 
 ## ***Validaciones***
 
-Creamos las validaciones con try´s, esto nos ayuda a 
+- Antes de verificar nuestros menús, observamos si la variable archivoFailed es verdadera, si es verdadera significa que alguno de los archivos no se abrió correctamente, así que mostramos un mensaje de que contacte al desarrollador y se cierra el programa.
+<br>
+
+- Lo primero que haremos será preguntar al usuario que ingrese un número dependiendo de la opción o que presione cualquier otra tecla para salir.
+<br>
+
+- Con cualquier otra tecla, nos referimos a una cadena de texto. Si el usuario ingresa una, recibirá un mensaje de agradecimiento por visitarnos, esto es realizado ya que el código dará error al momento que intentemos convertir una cadena de texto a un entero, lo cual obtiene el catch y muestra el mensaje.
+<br>
+
+- Si el usuario ingresa cualquier otro número, el sistema le indicará que no es una opción válida.
+<br>
+
+- Si el usuario ingresa un valor correcto, llamamos a la función correspondiente para dicho menú.
+
+
+## ***Funciones Extras***
+
+*Estas funciones son muy importantes durante todo el código. Sin embargo, no representan la lógica completa debido a que su objetivo es complementar el código .*
+
+
+- searchStudent: esta función nos ayuda a encontrar un estudiante pasando un número de carnet como parámetro. Si el carnet coincide con algún estudiante, nos da su posición. Si no lo encuentra, nos da -1. Esto ya que nunca puede darnos un índice menor a 0 si es encontrado.
+
+<br>
+
+- showInventory: dicha función nos brinda la facilidad de hacer un for llamando el método ***toString()*** de la clase Student para mostrar toda su información. Tiene como parámetro un booleano el cual nos ayuda a imprimir el promedio de un estudiante si es deseado.
+
+<br>
+
+- Promedio61: durante los reportes nos piden encontrar a todos los estudiantes con un promedio de 61 o mayor. Con esta función logramos crear un for nuevamente el cual busca si el promedio es igual o mayor a 61, si lo es imprimir el promedio del estudiante.
+
+<br>
+
+- showLogo: hacemos uso de esta función para mostrar las iniciales de la Universidad Mariano Gálvez y el título del programa. 
+
+<br>
+
+- PromediosTotales: esta función fue creada con el propósito de calcular el promedio total de todos los estudiantes, además de mostrar el promedio total de cada materia.

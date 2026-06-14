@@ -156,7 +156,7 @@ class LeerArchivos {
 
 public:
 
-    string values[2] = {"activo", "inactivo"};
+    //string values[2] = {"activo", "inactivo"};
 
     void LeerEstudiantes(string file) {
 
@@ -291,7 +291,7 @@ public:
 
 void sort() {
     Student estudiante;
-    //vamos a ordenar nuestro array inventario de mayor a menor
+    //vamos a ordenar nuestro array inventario de menor a mayor
     for (int i = 0; i < index - 2; i++) {
 
         for (int j = 0; j < index - 1 - i; j++) {
@@ -339,38 +339,6 @@ string MenuPrincipal() {
 
 }
 
-int Menu2(bool ave) {
-    string result;
-    cout << "Ingrese el numero de carnet del estudiante que desea buscar por favor! " << endl;
-    getline(cin, result);
-
-    try {
-        int resultInt = stoi(result);
-
-        int indexStudent = searchStudent(resultInt);
-
-        if (indexStudent > -1) {
-            inventory[indexStudent].toString(ave);
-
-        }else if (indexStudent == -1) {
-            cout << "Estudiante no encontrado, revise el numero de carnet por favor! " << endl;
-
-        }else if (indexStudent == -2) {
-            cout << "Valor incorrecto! " << endl;
-
-        }else {
-            cout << "Ha ocurrido un error, contacte al desarrollador! " << endl;
-        }
-
-    }catch (exception& e) {
-        cout << "Valor incorrecto! " << endl;
-
-        return -2;
-
-    }
-
-}
-
 void PromediosTotales() {
 
     float totalAverage = 0;
@@ -397,12 +365,43 @@ void PromediosTotales() {
 
 }
 
+int Menu2(bool ave) {
+    string result;
+    cout << "Ingrese el numero de carnet del estudiante que desea buscar por favor! " << endl;
+    getline(cin, result);
+
+    try {
+        int resultInt = stoi(result);
+
+        int indexStudent = searchStudent(resultInt);
+
+        if (indexStudent > -1) {
+            inventory[indexStudent].toString(ave);
+
+        }else if (indexStudent == -1) {
+            cout << "Estudiante no encontrado, revise el numero de carnet por favor! " << endl;
+            cout << "Estaba buscando el promedio de todos? " << endl;
+            PromediosTotales();
+
+
+        }else {
+            cout << "Ha ocurrido un error, contacte al desarrollador! " << endl;
+        }
+
+    }catch (exception& e) {
+        cout << "Valor incorrecto! " << endl;
+
+        return -2;
+
+    }
+
+}
+
+
+
 void Menu3() {
     cout << "---------- Promedio ---------" << endl;
     Menu2(true);
-
-    cout << "Estaba buscando el promedio de todos? " << endl;
-    PromediosTotales();
 
 
 }
